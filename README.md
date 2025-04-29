@@ -1,1 +1,61 @@
 # WebGoat-Lab-
+
+
+
+
+# 📄 Vulnerability Report - WebGoat
+
+## 🔍 Εντοπισμένα Alerts
+
+| Severity | Είδος Ευπάθειας     | Αρχείο                          | Περιγραφή                                      | Link στο Alert |
+|----------|---------------------|----------------------------------|------------------------------------------------|----------------|
+| Critical | SQL Injection       | webgoat-lessons/SQLInjection.java | Εισαγωγή μη φιλτραρισμένων εισόδων στον SQL query. | [Alert](#)     |
+| Critical | Command Injection   | webgoat-lessons/Exec.java         | Εκτέλεση εντολών κελύφους με μη φιλτραρισμένα δεδομένα. | [Alert](#)     |
+| High     | Path Traversal      | webgoat-lessons/FileAccess.java   | Επιτρέπει πρόσβαση σε αρχεία εκτός του επιτρεπόμενου path. | [Alert](#)     |
+| High     | Cross-Site Scripting (XSS) | webgoat-lessons/XSS.java          | Μη κωδικοποιημένη έξοδος HTML επιτρέπει injection script. | [Alert](#)     |
+| High     | Hardcoded Credentials | webgoat-lessons/Auth.java        | Χρήση σταθερών διαπιστευτηρίων στον κώδικα.     | [Alert](#)     |
+
+---
+
+## 🛡️ Προτεινόμενα Μέτρα Αντιμετώπισης
+
+### SQL Injection
+- Χρήση Prepared Statements αντί για δυναμικά queries.
+- Αποφυγή εισαγωγής user input χωρίς έλεγχο τύπου/μορφής.
+
+### Command Injection
+- Χρήση `ProcessBuilder` με αυστηρό έλεγχο ορίων εισόδου.
+- Απομόνωση λειτουργιών κελύφους σε ασφαλές sandbox.
+
+### Path Traversal
+- Κανονικοποίηση διαδρομών με `Paths.get(...).normalize()`.
+- Περιορισμός προσβάσιμων καταλόγων με λευκή λίστα.
+
+### Cross-Site Scripting (XSS)
+- Κωδικοποίηση χαρακτήρων στην HTML έξοδο (π.χ. με Apache Commons StringEscapeUtils).
+- Χρήση HTTP headers για περιορισμό scripting (Content-Security-Policy).
+
+### Hardcoded Credentials
+- Μεταφορά credentials σε περιβαλλοντικές μεταβλητές ή config αρχεία εκτός VCS.
+- Χρήση vaults ή secrets management εργαλείων (π.χ. GitHub Secrets).
+
+---
+
+## 🔁 Κατάσταση μετά τη Διόρθωση
+
+| Ευπάθεια | Κατάσταση | Σχόλιο |
+|----------|-----------|--------|
+| SQL Injection | ✅ Fixed | Έγινε χρήση PreparedStatement. |
+| Command Injection | ✅ Fixed | Αφαιρέθηκε η χρήση `Runtime.exec`. |
+| Path Traversal | ✅ Fixed | Προστέθηκε έλεγχος με canonical path. |
+| XSS | ✅ Fixed | Εφαρμόστηκε HTML encoding. |
+| Hardcoded Credentials | ✅ Fixed | Μεταφέρθηκαν σε αρχείο `.env`. |
+
+> Η λειτουργικότητα της εφαρμογής παρέμεινε αμετάβλητη μετά τις διορθώσεις.
+
+---
+
+## 📎 Σημειώσεις
+- Τα Alerts επιλύθηκαν και εξαφανίστηκαν από το tab **"Code scanning alerts"** του GitHub.
+- Στιγμιότυπα οθόνης αποθηκεύονται στο φάκελο `/screenshots`.
+
