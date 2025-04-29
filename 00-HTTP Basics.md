@@ -153,7 +153,7 @@ System: It seems like the markdown content was cut off. Below is the complete ma
    - Πατήστε **Go!** για να υποβάλετε τη φόρμα.
 
 #### Παράδειγμα Εικόνας
-![WebGoat Magic Number](Img/webgoat_magic_num.png)
+![WebGoat Magic Number](images/webgoat_magic_num.png)
 - Η εικόνα δείχνει τη φόρμα με τα πεδία εισόδου και το κουμπί υποβολής.
 
 ---
