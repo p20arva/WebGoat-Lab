@@ -31,6 +31,8 @@
 - Ρύθμιση του cookie στο HTTP client του επιτιθέμενου.
 - Αποστολή POST αιτήματος με `Content-Type: application/x-www-form-urlencoded` και το `validateReq`.
 
+![](./images/csrf_2.png)
+
 ### 3. CSRF και Content-Type
 
 Ο επιτιθέμενος στέλνει ένα POST αίτημα σε `/WebGoat/csrf/feedback/message` με `Content-Type: text/plain`. Αν η εφαρμογή δεν ελέγχει τον τύπο περιεχομένου, μπορεί να δεχτεί το αίτημα, επιτρέποντας στον επιτιθέμενο να υποβάλει κακόβουλα δεδομένα.
