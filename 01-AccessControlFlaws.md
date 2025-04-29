@@ -40,7 +40,7 @@ Content-Type: application/json
 ## Έλλειψη Ελέγχου Πρόσβασης σε Επίπεδο Λειτουργίας (Missing Function Level Access Control) #1
 Οι διαθέσιμες επιλογές είναι `Users` και `Config`, όπως βρέθηκαν σε τμήμα του HTML που περιβάλλεται από class `hidden*` (δεν προσδιορίστηκε η ακριβής class, αλλά δεν είναι απαραίτητο).
 
-![Εικόνα UI με κρυφές επιλογές](./Img/function_level_access_control_1.png)
+![Εικόνα UI με κρυφές επιλογές](./images/function_level_access_control_1.png)
 
 * Επιλογές που είναι κρυμμένες στο περιβάλλον χρήστη.
 
