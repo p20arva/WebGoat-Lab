@@ -14,15 +14,11 @@
 
 Οι περιορισμοί που εφαρμόζονται σε πεδία φόρμας (π.χ. maxLength, pattern) μπορούν εύκολα να παρακαμφθούν αν τροποποιηθεί η HTTP αίτηση χειροκίνητα.
 
-![Field Restrictions](./images/frontend_restrictions_1.png)
-
 ---
 
 ### ✅ Επικύρωση Εισόδου (Frontend Validation)
 
 Ακόμα και η επικύρωση με JavaScript στο frontend μπορεί να παρακαμφθεί, τροποποιώντας απλώς τα δεδομένα που αποστέλλονται στην αίτηση.
-
-![Frontend Validation](./images/frontend_restrictions_2.png)
 
 > ⚠️ Η λογική ασφαλείας **ποτέ** δεν πρέπει να βασίζεται αποκλειστικά στο client side.
 
