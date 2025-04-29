@@ -57,7 +57,7 @@
    - Πατήστε **Go!** για να υποβάλετε τη φόρμα.
 
 #### Παράδειγμα Εικόνας
-![WebGoat Magic Number](images/webgoat_magic_num (1).png)
+![WebGoat Magic Number](images/webgoat_magic_num.png)
 - Η εικόνα δείχνει τη φόρμα με τα πεδία εισόδου και το κουμπί υποβολής.
 
 ---
