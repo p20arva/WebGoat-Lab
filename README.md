@@ -11,7 +11,7 @@
 
 1. **Κλωνοποίηση του αποθετηρίου WebGoat:**
    - Μεταβείτε στο GitHub repository: [https://github.com/WebGoat/WebGoat](https://github.com/WebGoat/WebGoat)
-   - Κάντε *Clone ΄η Fork* του αποθετηρίου στο προσωπικό σας GitHub λογαριασμό.
+   - Κάντε *Clone* του αποθετηρίου στο προσωπικό σας GitHub λογαριασμό.
    - Κλωνοποιήστε το τοπικά:
      ```bash
      git clone https://github.com/<το-username-σας>/WebGoat.git
