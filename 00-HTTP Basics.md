@@ -1,0 +1,192 @@
+
+Αυτή η ενότητα καλύπτει τα βασικά στοιχεία του πρωτοκόλλου HTTP, εστιάζοντας στη χρήση εργαλείων προγραμματιστή (developer tools) για την ανάλυση αιτημάτων και την εξαγωγή πληροφοριών, όπως ο τύπος αιτήματος (POST ή GET) και κρυφές τιμές εισόδου (hidden input fields). Το υλικό βασίζεται στο μάθημα του WebGoat και περιλαμβάνει εξηγήσεις, βήματα και συμβουλές.
+
+### Βασικές Έννοιες
+- **HTTP**: Το πρωτόκολλο μεταφοράς υπερκειμένου (HyperText Transfer Protocol) χρησιμοποιείται για την επικοινωνία μεταξύ πελάτη (browser) και διακομιστή (server).
+- **POST vs GET**:
+  - **GET**: Αιτήματα που ανακτούν δεδομένα από τον διακομιστή. Οι παράμετροι περνούν μέσω του URL.
+  - **POST**: Αιτήματα που αποστέλλουν δεδομένα στον διακομιστή, συνήθως μέσω του σώματος του αιτήματος (request body).
+- **Developer Tools**: Εργαλεία ενσωματωμένα στους περιηγητές (π.χ., Chrome, Firefox) για την ανάλυση κώδικα, αιτημάτων δικτύου και συμπεριφοράς εφαρμογών.
+- **Hidden Input Field**: Κρυφό πεδίο σε μια φόρμα HTML που περιέχει δεδομένα τα οποία δεν εμφανίζονται στον χρήστη αλλά αποστέλλονται στον διακομιστή.
+
+---
+
+## Ανάλυση Μαθήματος
+
+### Μάθημα: Βασικά του HTTP
+**Περιγραφή**: Ο στόχος είναι να εντοπιστεί ο τύπος αιτήματος (POST ή GET) και ο "μαγικός αριθμός" (magic number) που παράγεται από κρυφό πεδίο εισόδου σε μια φόρμα HTML.
+
+#### Βήματα
+1. **Άνοιγμα Εργαλείων Προγραμματιστή**:
+   - Πατήστε `Ctrl+Shift+I` για να ανοίξετε τα εργαλεία προγραμματιστή στον περιηγητή.
+   - Μεταβείτε στην καρτέλα **Network** για να παρακολουθήσετε τα αιτήματα δικτύου.
+
+2. **Ανάλυση της Φόρμας**:
+   - Η φόρμα HTML περιλαμβάνει τον ακόλουθο κώδικα:
+     ```html
+     <form class="attack-form" accept-charset="UNKNOWN" method="POST" name="form"
+     action="/WebGoat/HttpBasics/attack2" enctype="application/json;charset=UTF-8">
+         <script>
+             webgoat.customjs.assignRandomVal = function () {
+                 var x = Math.floor((Math.random() * 100) + 1);
+                 document.getElementById("magic_num").value = x;
+             };
+             webgoat.customjs.assignRandomVal();
+         </script>
+         <input type="hidden" name="magic_num" id="magic_num" value="69">
+         <table>
+             <tbody><tr>
+                 <td>Was the HTTP command a POST or a GET:</td>
+                 <td><input name="answer" value="" type="TEXT"></td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>What is the magic number:</td>
+                 <td>
+                     <input name="magic_answer" value="" type="TEXT">
+                     <input name="SUBMIT" value="Go!" type="SUBMIT">
+                 </td>
+                 <td></td>
+             </tr>
+         </tbody></table>
+     </form>
+     ```
+   - **Παρατηρήσεις**:
+     - Η φόρμα χρησιμοποιεί μέθοδο **POST** (`method="POST"`).
+     - Υπάρχει ένα κρυφό πεδίο εισόδου (`<input type="hidden" name="magic_num" id="magic_num" value="69">`).
+     - Ο "μαγικός αριθμός" παράγεται δυναμικά από JavaScript που ορίζει μια τυχαία τιμή μεταξύ 1 και 100.
+
+3. **Εντοπισμός του Μαγικού Αριθμού**:
+   - Ελέγξτε την τιμή του πεδίου `magic_num` στην καρτέλα **Elements** των εργαλείων προγραμματιστή.
+   - Εναλλακτικά, παρακολουθήστε το αίτημα `attack2` στην καρτέλα **Network** μετά την υποβολή της φόρμας. Η τιμή του `magic_num` εμφανίζεται στα **Form Data**.
+
+4. **Εντο<
+
+System: It seems like the markdown content was cut off. Below is the complete markdown file content for the HTTP Basics lesson, translated into Greek, based on the provided input and following the same structure as the previous response. I've ensured all details are included, and the file is ready to be saved as `HTTP_Basics_Lessons.md`.
+
+```markdown
+# Βασικά του HTTP (HTTP Basics)
+
+## Μετάφραση στα Ελληνικά
+- **HTTP Basics**: **Βασικά του HTTP**
+- **Magic Number**: **Μαγικός Αριθμός**
+- **Hidden Input Field**: **Κρυφό Πεδίο Εισόδου**
+- **Developer Tools**: **Εργαλεία Προγραμματιστή**
+- **Network Tab**: **Καρτέλα Δικτύου**
+- **Request Type**: **Τύπος Αιτήματος**
+- **Form Data**: **Δεδομένα Φόρμας**
+
+---
+
+## Εκπαιδευτικό Υλικό για τα Βασικά του HTTP
+
+Αυτή η ενότητα καλύπτει τα βασικά στοιχεία του πρωτοκόλλου HTTP, εστιάζοντας στη χρήση εργαλείων προγραμματιστή (developer tools) για την ανάλυση αιτημάτων και την εξαγωγή πληροφοριών, όπως ο τύπος αιτήματος (POST ή GET) και κρυφές τιμές εισόδου (hidden input fields). Το υλικό βασίζεται στο μάθημα του WebGoat και περιλαμβάνει εξηγήσεις, βήματα και συμβουλές.
+
+### Βασικές Έννοιες
+- **HTTP**: Το πρωτόκολλο μεταφοράς υπερκειμένου (HyperText Transfer Protocol) χρησιμοποιείται για την επικοινωνία μεταξύ πελάτη (browser) και διακομιστή (server).
+- **POST vs GET**:
+  - **GET**: Αιτήματα που ανακτούν δεδομένα από τον διακομιστή. Οι παράμετροι περνούν μέσω του URL.
+  - **POST**: Αιτήματα που αποστέλλουν δεδομένα στον διακομιστή, συνήθως μέσω του σώματος του αιτήματος (request body).
+- **Developer Tools**: Εργαλεία ενσωματωμένα στους περιηγητές (π.χ., Chrome, Firefox) για την ανάλυση κώδικα, αιτημάτων δικτύου και συμπεριφοράς εφαρμογών.
+- **Hidden Input Field**: Κρυφό πεδίο σε μια φόρμα HTML που περιέχει δεδομένα τα οποία δεν εμφανίζονται στον χρήστη αλλά αποστέλλονται στον διακομιστή.
+
+---
+
+## Ανάλυση Μαθήματος
+
+### Μάθημα: Βασικά του HTTP
+**Περιγραφή**: Ο στόχος είναι να εντοπιστεί ο τύπος αιτήματος (POST ή GET) και ο "μαγικός αριθμός" (magic number) που παράγεται από κρυφό πεδίο εισόδου σε μια φόρμα HTML.
+
+#### Βήματα
+1. **Άνοιγμα Εργαλείων Προγραμματιστή**:
+   - Πατήστε `Ctrl+Shift+I` για να ανοίξετε τα εργαλεία προγραμματιστή στον περιηγητή.
+   - Μεταβείτε στην καρτέλα **Network** για να παρακολουθήσετε τα αιτήματα δικτύου.
+
+2. **Ανάλυση της Φόρμας**:
+   - Η φόρμα HTML περιλαμβάνει τον ακόλουθο κώδικα:
+     ```html
+     <form class="attack-form" accept-charset="UNKNOWN" method="POST" name="form"
+     action="/WebGoat/HttpBasics/attack2" enctype="application/json;charset=UTF-8">
+         <script>
+             webgoat.customjs.assignRandomVal = function () {
+                 var x = Math.floor((Math.random() * 100) + 1);
+                 document.getElementById("magic_num").value = x;
+             };
+             webgoat.customjs.assignRandomVal();
+         </script>
+         <input type="hidden" name="magic_num" id="magic_num" value="69">
+         <table>
+             <tbody><tr>
+                 <td>Was the HTTP command a POST or a GET:</td>
+                 <td><input name="answer" value="" type="TEXT"></td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>What is the magic number:</td>
+                 <td>
+                     <input name="magic_answer" value="" type="TEXT">
+                     <input name="SUBMIT" value="Go!" type="SUBMIT">
+                 </td>
+                 <td></td>
+             </tr>
+         </tbody></table>
+     </form>
+     ```
+   - **Παρατηρήσεις**:
+     - Η φόρμα χρησιμοποιεί μέθοδο **POST** (`method="POST"`).
+     - Υπάρχει ένα κρυφό πεδίο εισόδου (`<input type="hidden" name="magic_num" id="magic_num" value="69">`).
+     - Ο "μαγικός αριθμός" παράγεται δυναμικά από JavaScript που ορίζει μια τυχαία τιμή μεταξύ 1 και 100.
+
+3. **Εντοπισμός του Μαγικού Αριθμού**:
+   - Ελέγξτε την τιμή του πεδίου `magic_num` στην καρτέλα **Elements** των εργαλείων προγραμματιστή. Η τιμή ενημερώνεται από το JavaScript.
+   - Εναλλακτικά, παρακολουθήστε το αίτημα `attack2` στην καρτέλα **Network** μετά την υποβολή της φόρμας. Η τιμή του `magic_num` εμφανίζεται στα **Form Data** (π.χ., μετά από αποτυχημένη προσπάθεια).
+   - Η τιμή μπορεί να είναι διαφορετική κάθε φορά λόγω της τυχαίας παραγωγής (1-100).
+
+4. **Εντοπισμός του Τύπου Αιτήματος**:
+   - Στην καρτέλα **Network**, εντοπίστε το αίτημα `attack1` ή `attack2`.
+   - Στις **Headers** του αιτήματος, ο τύπος αιτήματος αναφέρεται ως **POST**.
+   - Επιβεβαιώστε ότι η φόρμα χρησιμοποιεί μέθοδο POST, όπως φαίνεται στον κώδικα HTML.
+
+5. **Συμπλήρωση της Φόρμας**:
+   - Στο πεδίο **Was the HTTP command a POST or a GET**, εισαγάγετε `POST`.
+   - Στο πεδίο **What is the magic number**, εισαγάγετε την τιμή του `magic_num` που εντοπίσατε (π.χ., 69 ή οποιαδήποτε άλλη τυχαία τιμή από το JavaScript).
+   - Πατήστε **Go!** για να υποβάλετε τη φόρμα.
+
+#### Παράδειγμα Εικόνας
+![WebGoat Magic Number](Img/webgoat_magic_num.png)
+- Η εικόνα δείχνει τη φόρμα με τα πεδία εισόδου και το κουμπί υποβολής.
+
+---
+
+## Συμβουλές για την Εκμάθηση και την Ανάλυση
+
+### Συμβουλές Εκμάθησης
+1. **Χρήση Εργαλείων Προγραμματιστή**:
+   - Εξοικειωθείτε με τις καρτέλες **Elements** (για HTML), **Network** (για αιτήματα) και **Console** (για σφάλματα JavaScript).
+   - Χρησιμοποιήστε τη λειτουργία "Inspect Element" για να εντοπίσετε κρυφά πεδία.
+2. **Ανάλυση Αιτημάτων**:
+   - Ελέγξτε τις **Headers** για πληροφορίες όπως ο τύπος αιτήματος (Method: POST/GET).
+   - Εξετάστε τα **Form Data** ή **Query String Parameters** για να δείτε τις τιμές που αποστέλλονται.
+3. **Κατανόηση JavaScript**:
+   - Το JavaScript στη φόρμα παράγει δυναμικές τιμές. Ελέγξτε τη λογική του (π.χ., τυχαίοι αριθμοί) για να προβλέψετε την έξοδο.
+   - Χρησιμοποιήστε την καρτέλα **Console** για να εκτελέσετε τον κώδικα JavaScript χειροκίνητα, αν χρειάζεται.
+
+### Συμβουλές Ανάλυσης
+- **Δυναμικές Τιμές**: Ο μαγικός αριθμός αλλάζει σε κάθε φόρτωση της σελίδας λόγω του JavaScript. Ελέγξτε την τρέχουσα τιμή πριν την υποβολή.
+- **Αποτυχημένες Προσπάθειες**: Αν η πρώτη υποβολή αποτύχει, τα **Form Data** του αιτήματος `attack2` αποκαλύπτουν τον σωστό μαγικό αριθμό.
+- **Εναλλακτικές Μέθοδοι**:
+  - Εκτελέστε τη συνάρτηση `webgoat.customjs.assignRandomVal()` στην κονσόλα για να δείτε την παραγόμενη τιμή.
+  - Χρησιμοποιήστε εργαλεία όπως το Burp Suite για να αναλύσετε και να τροποποιήσετε τα αιτήματα.
+
+---
+
+## Επιπρόσθετοι Πόροι
+- **OWASP HTTP Basics**: https://owasp.org/www-community/attacks/ (για γενικές πληροφορίες σχετικά με το HTTP).
+- **WebGoat Tutorial**: Εξερευνήστε το WebGoat (https://owasp.org/www-project-webgoat/) για πρακτικές ασκήσεις.
+- **MDN Web Docs - HTTP**: https://developer.mozilla.org/en-US/docs/Web/HTTP (για τεκμηρίωση του HTTP).
+- **PortSwigger Web Security Academy**: https://portswigger.net/web-security (για ασκήσεις HTTP και άλλες ευπάθειες).
+
+**Υπόδειξη για Πρακτική**:
+- Ρυθμίστε ένα τοπικό περιβάλλον WebGoat για να εξασκηθείτε στην ανάλυση αιτημάτων HTTP.
+- Χρησιμοποιήστε εργαλεία όπως το Burp Suite ή το Postman για να χειραγωγήσετε και να δοκιμάσετε αιτήματα.
+- Εξοικειωθείτε με την καρτέλα **Network** για να κατανοήσετε τη ροή δεδομένων μεταξύ πελάτη και διακομιστή.
